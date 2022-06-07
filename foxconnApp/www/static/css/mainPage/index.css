@@ -1,0 +1,13 @@
+
+#orderForm > div > .labelMain{
+    display: block;
+    width: 10rem;
+}
+.inputHolder{
+    display: flex;
+    margin: 0.5rem;
+}
+
+.equipmentDiv{
+    margin-right: 1rem;
+}

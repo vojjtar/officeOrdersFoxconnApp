@@ -6,5 +6,6 @@ app = Flask(__name__,
             static_folder='www/static')
 
 # importing the views from foxconnApp package
-import foxconnApp.views
+from foxconnApp import views
+from foxconnApp import order
 

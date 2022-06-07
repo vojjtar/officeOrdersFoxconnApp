@@ -4,9 +4,74 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='css/mainPage/index.css') }}">
+    <script src="{{ url_for('static',filename='js/mainPage/orderScript.js') }}"></script>
     <title>MainPage</title>
 </head>
 <body>
-    <h3>main page</h3>
+    <div id="mainWrap">
+        <div id="leftSide"></div>
+        <div id="rightSide"></div>
+
+
+
+        <div id="mainContent">
+
+            <h2>Office orders</h2>
+
+
+            <form action="/order" method="POST">
+                <div id="orderForm">
+
+                    <div class="inputHolder">
+                        <label for="idDiv" class="labelMain">ID</label>
+                        <input type="text" name="idDiv" id="idDiv" maxlength="7" minlength="7">
+                    </div>
+
+                    <div class="inputHolder">
+                        <label for="email" class="labelMain">E-mail</label>
+                        <input type="email" name="email" id="email">
+                    </div>
+
+                    <div class="inputHolder">
+                        <label for="name" class="labelMain">Name</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+
+                    <div class="inputHolder">
+                        <label for="surname" class="labelMain">Surname</label>
+                        <input type="text" name="surname" id="surname">
+                    </div>
+
+                    <div class="inputHolder">
+                        <label for="" class="labelMain">Equipment</label>
+
+                        {% for item in data %}
+                            <div class="equipmentDiv">
+                                <input type="checkbox" name="{{item.name}}" id="{{item.name}}" onclick="activeEquipment(this.id)">
+                                <label for="{{item.name}}">{{item.name}} ({{item.price}} USD)</label> <br>
+
+                                <select name="quantity-{{item.name}}" id="quantity-{{item.name}}">
+                                    {% for i in range (1, item.limit + 1) %}
+                                        <option value="{{i}}">{{i}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <div>
+                        <p id="price">ss</p>
+                    </div>
+                    
+                    <div id="orderButton" class="inputHolder labelMain">
+                        <button type="submit">order</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
