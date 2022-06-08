@@ -16,6 +16,8 @@
     Bash: `$ pip3 install -r requirements.txt` \
     CMD: `> pip install -r requirements.txt`
 
+- Create .env file in the root directory following the .env.template file
+
 - Run the app with the following command \
     `flask run` or `python run.py`
 
