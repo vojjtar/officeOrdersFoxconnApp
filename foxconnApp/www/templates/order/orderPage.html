@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='css/mainPage/index.css') }}">
-    <script src="{{ url_for('static',filename='js/mainPage/orderScript.js') }}"></script>
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='css/order/index.css') }}">
+    <script src="{{ url_for('static',filename='js/order/orderScript.js') }}"></script>
     <title>MainPage</title>
 </head>
 <body>
@@ -20,13 +20,19 @@
 
             <h2>Office orders</h2>
 
+            <p style="color: red;">
+                {% if errorMessage != None %}
+                    {{errorMessage}}
+                {% endif %}
+            </p>
 
             <form action="/order" method="POST">
                 <div id="orderForm">
 
                     <div class="inputHolder">
                         <label for="idDiv" class="labelMain">ID</label>
-                        <input type="text" name="idDiv" id="idDiv" maxlength="7" minlength="7">
+                        <!-- <input type="text" name="idDiv" id="idDiv" maxlength="7" minlength="7" value="{{personalId}}"> -->
+                        <p id="idDiv">{{personalId}}</p>
                     </div>
 
                     <div class="inputHolder">
@@ -49,11 +55,11 @@
 
                         {% for item in data %}
                             <div class="equipmentDiv">
-                                <input type="checkbox" name="{{item.name}}" id="{{item.name}}" onclick="activeEquipment(this.id)">
+                               <!-- <input type="checkbox" name="{{item.name}}" id="{{item.name}}" onclick="activeEquipment(this.id)"> -->
                                 <label for="{{item.name}}">{{item.name}} ({{item.price}} USD)</label> <br>
 
                                 <select name="quantity-{{item.name}}" id="quantity-{{item.name}}">
-                                    {% for i in range (1, item.limit + 1) %}
+                                    {% for i in range (0, item.limit + 1) %}
                                         <option value="{{i}}">{{i}}</option>
                                     {% endfor %}
                                 </select>
@@ -61,16 +67,25 @@
                         {% endfor %}
 
                     </div>
-
-                    <div>
-                        <p id="price">ss</p>
-                    </div>
                     
                     <div id="orderButton" class="inputHolder labelMain">
-                        <button type="submit">order</button>
+                        <button type="submit">Done</button>
                     </div>
                 </div>
             </form>
+
+            <div>
+                <p>Last 3 orders:</p>
+                {% for item in dataOrders %}
+                    <a>{{item.date}} | {{item.name}} {{item.surname}} - {{item.price}} USD (ID: {{item.personalId}})</a> <br>
+                {% endfor %}
+            </div>
+
+            <div>
+                <p>Total price for all unprocessed orders:</p>
+                <a>{{priceForNotProcessed}} USD</a>
+            </div>
+
         </div>
     </div>
 </body>

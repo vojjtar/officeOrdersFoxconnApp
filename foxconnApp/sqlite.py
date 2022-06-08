@@ -23,13 +23,17 @@ def read():
 
     cur = conn.cursor()
 
-    cur.execute("SELECT quantityLimit FROM equipment")
+    cur.execute("SELECT name, surname FROM orders")
 
 
     results = cur.fetchall()
     print(cur.description)
     print(results)
 
+
+
+def tst():
+    pass
 
 
 read()

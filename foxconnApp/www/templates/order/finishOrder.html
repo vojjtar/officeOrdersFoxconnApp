@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/finishOrder" method="POST">
+        <p>You have ordered these items:</p>
+
+        {% for item in finishData %}
+            <a>{{item.name}} ({{item.quantity}}x - {{item.price}}USD)</a> <br>
+        {% endfor %}
+
+        <p>For the total price of: {{totalPrice}} USD</p>
+        <p>Do you wish to finish the order?</p>
+
+        <button type="submit">Finish</button>
+        <a href="/orderPage">cancel</a>
+    </form>
+</body>
+</html>
