@@ -1,5 +1,5 @@
 import sqlite3
-
+# ONLY FOR TESTING STUFF
 
 def create():
 
@@ -30,10 +30,10 @@ def read():
     print(cur.description)
     print(results)
 
+def change():
+    conn = sqlite3.connect('databaseF/equipment.db')
+    cur = conn.cursor()
 
+    cur.execute("DELETE FROM orders")
 
-def tst():
-    pass
-
-
-read()
+    conn.commit()

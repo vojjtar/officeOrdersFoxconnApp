@@ -1,0 +1,49 @@
+html{
+    font-family: 'Roboto', sans-serif;
+}
+
+#mainWrap{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+
+    grid-template-areas: 
+        "leftSide mainContent rightSide";
+}
+#mainContent{
+    grid-area: mainContent;
+    text-align: center;
+
+    border-radius: 8px;
+    border: 1px solid lightblue;
+    padding: 1.5rem;
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+
+    margin-top: 2rem;
+}
+#itemsDiv{
+    text-align: center;
+    border-radius: 4px;
+}
+
+#orderButton{
+    width: 6.5rem;
+    height: 2.5rem;
+    font-size: 18px;
+    background-color: #0096FF;
+    border: none;
+    transition-duration: 0.5s;
+    border-radius: 8px;
+
+    margin-right: 0.5rem;
+}
+#orderButton:hover{
+    transform: scale(1.1);
+}
+
+
+#leftSide{
+    grid-area: leftSide;
+}
+#rightSide{
+    grid-area: rightSide;
+}

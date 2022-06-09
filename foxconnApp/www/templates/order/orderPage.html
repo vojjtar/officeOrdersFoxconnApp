@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='css/order/index.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='css/order/orderPage.css') }}">
     <script src="{{ url_for('static',filename='js/order/orderScript.js') }}"></script>
     <title>MainPage</title>
 </head>
@@ -20,9 +20,9 @@
 
             <h2>Office orders</h2>
 
-            <p style="color: red;">
-                {% if errorMessage != None %}
-                    {{errorMessage}}
+            <p style="color: blue;">
+                {% if orderMessage != None %}
+                    {{orderMessage}}
                 {% endif %}
             </p>
 
@@ -55,6 +55,7 @@
 
                         {% for item in data %}
                             <div class="equipmentDiv">
+                                
                                <!-- <input type="checkbox" name="{{item.name}}" id="{{item.name}}" onclick="activeEquipment(this.id)"> -->
                                 <label for="{{item.name}}">{{item.name}} ({{item.price}} USD)</label> <br>
 
@@ -68,22 +69,22 @@
 
                     </div>
                     
-                    <div id="orderButton" class="inputHolder labelMain">
-                        <button type="submit">Done</button>
+                    <div id="orderButtonDiv" class="inputHolder labelMain">
+                        <button type="submit" id="orderButton">Done</button>
                     </div>
                 </div>
             </form>
 
-            <div>
+            <div id="lastOrdersDiv">
                 <p>Last 3 orders:</p>
                 {% for item in dataOrders %}
-                    <a>{{item.date}} | {{item.name}} {{item.surname}} - {{item.price}} USD (ID: {{item.personalId}})</a> <br>
+                    <a>{{item.date}} | {{item.name}} {{item.surname}} - <b>{{item.price}}</b> USD (ID: {{item.personalId}})</a> <br>
                 {% endfor %}
             </div>
 
-            <div>
+            <div id="totalPriceUnprocessedDiv">
                 <p>Total price for all unprocessed orders:</p>
-                <a>{{priceForNotProcessed}} USD</a>
+                <b><a>{{priceForNotProcessed}} USD</a></b>
             </div>
 
         </div>

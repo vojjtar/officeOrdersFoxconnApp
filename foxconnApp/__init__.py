@@ -8,7 +8,6 @@ app = Flask(__name__,
 app.secret_key = config('SECRET_KEY')
 
 
-
 # importing the views from foxconnApp package
 from foxconnApp import views
 from foxconnApp import order

@@ -3,22 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='css/order/finishOrder.css') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <form action="/finishOrder" method="POST">
-        <p>You have ordered these items:</p>
+    <div id="mainWrap">
+        <div id="leftSide"></div>
+        <div id="rightSide"></div>
 
-        {% for item in finishData %}
-            <a>{{item.name}} ({{item.quantity}}x - {{item.price}}USD)</a> <br>
-        {% endfor %}
+        <form action="/finishOrder" method="POST">
+            <div id="mainContent">
+                <h3>You have ordered these items:</h2>
+    
+                <div id="itemsDiv">
+                    {% for item in finishData %}
+                        <a>{{item.name}} ({{item.quantity}}x - {{item.price}}USD)</a> <br>
+                    {% endfor %}
+                </div>
+        
+                <p>For the total price of: <b>{{totalPrice}} USD</b></p>
+                <p>Do you wish to finish the order?</p>
+        
+                <button type="submit" id="orderButton">Finish</button>
+                <a href="/orderPage">cancel</a>
+            </div>
+        </form>
 
-        <p>For the total price of: {{totalPrice}} USD</p>
-        <p>Do you wish to finish the order?</p>
-
-        <button type="submit">Finish</button>
-        <a href="/orderPage">cancel</a>
-    </form>
+    </div>
 </body>
 </html>

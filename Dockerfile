@@ -9,6 +9,5 @@ RUN export FLASK_APP=app
 EXPOSE 5000
 
 COPY . ./app
-RUN pip3 install -e ./app
 
 CMD ["flask" "run"]

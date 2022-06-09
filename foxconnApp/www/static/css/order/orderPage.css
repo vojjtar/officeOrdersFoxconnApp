@@ -1,0 +1,82 @@
+html{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+#orderForm > div > .labelMain{
+    display: block;
+    width: 10rem;
+}
+.inputHolder{
+    display: flex;
+    margin: 0.5rem;
+}
+.inputHolder:nth-last-child(2){
+    margin-top: 2rem;
+}
+.equipmentDiv{
+    margin-right: 1rem;
+}
+
+#mainWrap{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+
+    grid-template-areas: 
+        "leftSide mainContent rightSide";
+}
+#mainContent{
+    grid-area: mainContent;
+    text-align: center;
+}
+
+#lastOrdersDiv, #totalPriceUnprocessedDiv{
+    padding: 0.5rem;
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+    border-radius: 8px;
+    margin-top: 0.8rem;
+
+    transition-duration: 2s;
+}
+#lastOrdersDiv:hover, #totalPriceUnprocessedDiv:hover{
+    transform: translate(0rem, -0.35rem);
+    transition-duration: 0.5s;
+}
+#orderButtonDiv{
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+#orderButton{
+    width: 6.5rem;
+    height: 2.2rem;
+    font-size: 18px;
+    background-color: #1484d4;
+    border: none;
+    transition-duration: 0.5s;
+    border-radius: 16px;
+    color: white;
+}
+#orderButton:hover{
+    transform: scale(1.05);
+}
+#idDiv{
+    margin: 0;
+    padding: 0;
+}
+.equipmentDiv > select{
+    margin-top: 0.5rem;
+}
+#orderForm{
+    padding: 0.5rem;
+    border: 1px solid lightblue;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+}
+
+#leftSide{
+    grid-area: leftSide;
+}
+#rightSide{
+    grid-area: rightSide;
+}
