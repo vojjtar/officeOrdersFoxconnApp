@@ -1,13 +1,11 @@
 FROM python:3.8-slim-buster
 
 
-WORKDIR /app
-COPY ./requirements.txt /app/requirements.txt
+WORKDIR /officeOrdersFoxconnApp
+ADD . /officeOrdersFoxconnApp
 
 RUN pip3 install -r requirements.txt
-RUN export FLASK_APP=app
-EXPOSE 5000
+RUN export FLASK_APP=run.py
 
-COPY . ./app
 
-CMD ["flask" "run"]
+CMD [ "python", "app.py" ]
