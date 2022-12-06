@@ -25,4 +25,8 @@
 
 - To get information about an order go to: `localhost:5000/getOrderInfo/{id_of_needed_order}`
 - To set an order as processed go to: `localhost:5000/setOrderAsProcessed/{id_of_needed_order}`
-    
+
+
+To run the application using docker follow these commands:
+- `sudo docker image build -t office-orders-foxconn-app .`
+- `sudo docker run -p 5000:5000 -d office-orders-foxconn-app`
